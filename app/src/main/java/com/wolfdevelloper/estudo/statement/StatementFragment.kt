@@ -7,14 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.wolfdevelloper.estudo.R
 import com.wolfdevelloper.estudo.viewmodel.Statement
+import javax.inject.Inject
 
 
 class StatementFragment : Fragment(), StatementContract.StatementPresenterOutput {
-
-    private val iStatementPresenterInput: StatementContract.StatementPresenterInput
+    @Inject
+    lateinit var  iStatementPresenterInput: StatementContract.StatementPresenterInput
 
     init {
-        iStatementPresenterInput = StatementPresenter(this)
+        DaggerStatementComponents
+            .builder()
+            .statementeModule(StatementeModule(this))
+            .build()
+            .inject(this)
     }
 
 

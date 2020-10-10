@@ -1,8 +1,10 @@
 package com.wolfdevelloper.estudo.statement
 
 import com.wolfdevelloper.estudo.entity.ListStatement
+import com.wolfdevelloper.estudo.ineractor.remote.service.statement.ServiceStatement
 import com.wolfdevelloper.estudo.utils.DateTime
 import com.wolfdevelloper.estudo.viewmodel.Statement
+import javax.inject.Inject
 
 class StatementPresenter(
     val iStatementPresenterOutput: StatementContract.StatementPresenterOutput
@@ -10,10 +12,15 @@ class StatementPresenter(
     StatementContract.StatementPresenterInput,
     StatementContract.StatementInteractorOutput {
 
-    private val iStatementInteractorInput: StatementContract.StatementInteractorInput
+    @Inject
+    lateinit var  iStatementInteractorInput: StatementContract.StatementInteractorInput
 
     init {
-        iStatementInteractorInput = StatementInteractor(this)
+        DaggerStatementComponents
+            .builder()
+            .statementeModule(StatementeModule(statementPresenter = this))
+            .build()
+            .inject(this)
     }
 
     override fun loadStatement() {
