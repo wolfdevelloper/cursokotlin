@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.wolfdevelloper.estudo.R
+import com.wolfdevelloper.estudo.viewmodel.Statement
 
 
 class StatementFragment : Fragment(), StatementContract.StatementPresenterOutput {
@@ -23,6 +24,10 @@ class StatementFragment : Fragment(), StatementContract.StatementPresenterOutput
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_statement, container, false)
+    }
+
+    override fun resultStatement(listStatement: MutableList<Statement>) {
+
     }
 }
 
