@@ -8,7 +8,14 @@ import android.view.ViewGroup
 import com.wolfdevelloper.estudo.R
 
 
-class StatementFragment : Fragment() {
+class StatementFragment : Fragment(), StatementContract.StatementPresenterOutput {
+
+    private val iStatementPresenterInput: StatementContract.StatementPresenterInput
+
+    init {
+        iStatementPresenterInput = StatementPresenter(this)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
