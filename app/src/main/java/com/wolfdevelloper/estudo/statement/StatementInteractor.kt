@@ -11,8 +11,8 @@ class StatementInteractor(
     override fun loadStatement(id: Int) {
         iServiceStatement.getStatement(id,
             sucess = {
-                iStatementInteractorOutput.resultStatement(it.body()!!)
-            }, failure = {})
+                iStatementInteractorOutput.resultStatement(it.body())
+            }, failure = { println("Erro ao carregar")})
 
     }
 }

@@ -3,7 +3,10 @@ package com.wolfdevelloper.estudo.ineractor.remote.service.statement
 import com.wolfdevelloper.estudo.entity.ListStatement
 import com.wolfdevelloper.estudo.ineractor.remote.connect.URL
 import com.wolfdevelloper.estudo.ineractor.remote.iapi.IStatementApi
-import retrofit2.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ServiceStatement : IServiceStatement {
@@ -21,8 +24,7 @@ class ServiceStatement : IServiceStatement {
         call.enqueue(object : Callback<ListStatement?> {
             override fun onResponse(
                 call: Call<ListStatement?>,
-                response: Response<ListStatement?>
-            ) {
+                response: Response<ListStatement?>){
                 sucess.invoke(response)
             }
 

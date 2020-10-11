@@ -29,7 +29,14 @@ class TestStatementPresenter {
 
     @Test
     fun resultStatement() {
-        statementPresenter.resultStatement(ListStatement())
+        var list:MutableList<com.wolfdevelloper.estudo.entity.Statement> = ArrayList()
+        list.add(com.wolfdevelloper.estudo.entity.Statement(
+            title = "title",
+            date = "2020-10-10",
+            desc = "desc",
+            value = 3.8
+        ))
+        statementPresenter.resultStatement(ListStatement(statementList = list))
         Mockito.verify(iStatementPresenterOutput, Mockito.times(1))
             .resultStatement(Mockito.anyListOf(Statement::class.java))
     }

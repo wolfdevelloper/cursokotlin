@@ -16,6 +16,7 @@ class TestServiceStatement : IServiceStatement {
         failure: (throwable: Throwable) -> Unit
     ) {
         val retrofit = Retrofit.Builder()
+            .baseUrl("https://192.168.1.1")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(IStatementApi::class.java)
         val call = retrofit.statement(id).execute()

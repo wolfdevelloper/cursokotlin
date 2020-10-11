@@ -13,8 +13,8 @@ data class Statement(
     fun mapper(statement: Statement): com.wolfdevelloper.estudo.viewmodel.Statement {
 
         this.title = statement.title
-        this.desc = statement.title
-        this.date = DateTime.mask(statement.title)
+        this.desc = statement.desc
+        this.date = DateTime.mask(statement.date)
         this.value = MoneyMask.mask(statement.value)
         return this
     }
